@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Models.Products;
 import com.example.demo.Repository.ProductRepository;
 
-@RequestMapping("/api/products/")
+@RequestMapping("/api/products")
 @RestController
 public class ProductController {
 	
@@ -34,7 +34,7 @@ public class ProductController {
 		}
 	}
 	//get product by id
-	@GetMapping("id")
+	@GetMapping("{id}")
 	public ResponseEntity<Products> getProductByID(@PathVariable (value = "id") Long id){
 		Optional<Products> product=productRepository.findById(id);
 		 if(product.isPresent()) {
