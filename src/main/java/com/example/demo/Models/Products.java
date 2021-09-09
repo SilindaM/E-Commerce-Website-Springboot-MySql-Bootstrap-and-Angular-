@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,10 +28,12 @@ public class Products {
 	private boolean ProductAvailability;
 	@Column(nullable =false)
 	private String ProductDescription;
-	@Column(nullable =false)
+	
+	@OneToMany(fetch = FetchType.LAZY)
 	private String ProductImage;
+	@JsonIgnore
+	@JoinColumn(name="imageId")
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
 	@JoinColumn(name="categoryId",nullable = false)
 	private Category category;
 	
