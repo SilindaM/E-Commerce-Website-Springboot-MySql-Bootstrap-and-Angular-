@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Products {
 
@@ -28,6 +30,7 @@ public class Products {
 	@Column(nullable =false)
 	private String ProductImage;
 	@ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
 	@JoinColumn(name="categoryId",nullable = false)
 	private Category category;
 	
